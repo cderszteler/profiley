@@ -1,5 +1,6 @@
 import React, {useMemo} from "react";
 import {ProfileDecoration} from "@/lib/profiles";
+import {QuestionMarkCircleIcon} from "@heroicons/react/24/outline"
 import clsx from "clsx";
 
 export function ProfileCard({children, decoration}: {
@@ -47,5 +48,25 @@ ProfileCard.Banner = function ProfileCardBanner({decoration}: {
       className="w-full h-48 bg-cover"
       style={style}
     />
+  )
+}
+
+ProfileCard.Avatar = function ProfileCardBanner({className, decoration}: {
+  className?: string
+  decoration: ProfileDecoration
+}) {
+  const avatar = useMemo(() => {
+    return decoration.avatar
+      ? <div className="bg-cover w-full h-full" style={{backgroundImage: `url(${decoration.avatar?.url})`}}/>
+      : <QuestionMarkCircleIcon className="w-full text-slate-900 dark:text-slate-100"/>
+  }, [decoration.avatar])
+
+  return (
+    <div className={clsx(
+      "relative w-32 h-32 rounded-full border-8 border-slate-100 dark:border-slate-900 bg-slate-100 dark:bg-slate-900 overflow-hidden",
+      className
+    )}>
+      {avatar}
+    </div>
   )
 }
