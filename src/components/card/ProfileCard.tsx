@@ -9,7 +9,25 @@ import {
   VerifiedBadge
 } from "@/components/Badges";
 
-export function ProfileCard({children, decoration}: {
+export function ProfileCard({profile}: {
+  profile: Profile
+}) {
+
+
+  return (
+    <ProfileCard.Container decoration={profile.decoration}>
+      <ProfileCard.Banner decoration={profile.decoration}/>
+      <div className="relative h-12 sm:h-16">
+        <ProfileCard.Avatar decoration={profile.decoration} className="absolute -top-12 sm:-top-16 left-2"/>
+      </div>
+      <div className="px-4 py-2 sm:py-4 h-[36rem] dark:text-white">
+        <ProfileCard.Header profile={profile}/>
+      </div>
+    </ProfileCard.Container>
+  )
+}
+
+ProfileCard.Container = function ProfileCard({children, decoration}: {
   children: React.ReactNode
   decoration: ProfileDecoration
 }) {
