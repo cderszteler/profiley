@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useMemo} from "react";
 import {ProfileDecoration} from "@/lib/profiles";
 import clsx from "clsx";
 
-export function ProfileCard({children, borderColor}: {
+export function ProfileCard({children, decoration}: {
   children: React.ReactNode
-  borderColor: ProfileDecoration["borderColor"]
+  decoration: ProfileDecoration
 }) {
+  const borderColor = decoration.borderColor
+
   return (
     <div
       className={clsx(
@@ -24,5 +26,26 @@ export function ProfileCard({children, borderColor}: {
       />
       {children}
     </div>
+  )
+}
+
+ProfileCard.Banner = function ProfileCardBanner({decoration}: {
+  decoration: ProfileDecoration
+}) {
+  const style = useMemo(() => {
+    // @ts-ignore
+    if (decoration.banner?.color) {
+      // @ts-ignore
+      return { backgroundColor: decoration.banner.color }
+    }
+    // @ts-ignore
+    return { backgroundImage: `url(${decoration.banner.url})` }
+  }, [decoration.banner])
+
+  return (
+    <div
+      className="w-full h-48 bg-cover"
+      style={style}
+    />
   )
 }

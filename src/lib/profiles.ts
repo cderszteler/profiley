@@ -1,6 +1,8 @@
-import {CSSProperties} from "react";
+import {Property} from "csstype";
 
 export type Profile = {
+  handle: string
+  displayName: string
   decoration: ProfileDecoration
 }
 
@@ -9,6 +11,10 @@ export type ProfileDecoration = {
     from: Color
     to: Color
   }
+  banner: { color: Color } | { url: string }
+  avatar?: {
+    url: string
+  }
 }
 
-type Color = CSSProperties["color"]
+type Color = Property.Color
