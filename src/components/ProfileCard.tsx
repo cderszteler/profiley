@@ -9,7 +9,7 @@ export function ProfileCard({children, borderColor}: {
   return (
     <div
       className={clsx(
-        "w-full max-w-lg bg-white",
+        "w-full max-w-lg h-max bg-slate-100 dark:bg-slate-900",
         "relative border-4 border-transparent rounded-lg bg-clip-padding",
       )}
     >
