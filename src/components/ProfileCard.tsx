@@ -25,7 +25,9 @@ export function ProfileCard({children, decoration}: {
           "--tw-gradient-stops": "var(--tw-gradient-from), var(--tw-gradient-to)"
         }}
       />
-      {children}
+      <div className="rounded overflow-hidden">
+        {children}
+      </div>
     </div>
   )
 }
