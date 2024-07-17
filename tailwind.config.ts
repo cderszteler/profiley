@@ -10,6 +10,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        "slate": {
+          "850": `color-mix(in srgb, ${colors.slate["800"]}, ${colors.slate["900"]})`
+        },
         "light-primary": colors.slate["100"],
         "dark-primary": colors.slate["900"],
       },
