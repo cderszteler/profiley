@@ -1,8 +1,5 @@
-import {
-  BeakerIcon,
-  CheckBadgeIcon,
-  FingerPrintIcon
-} from "@heroicons/react/24/solid";
+import {BeakerIcon, FingerPrintIcon} from "@heroicons/react/24/solid";
+import {CheckBadgeIcon} from "@heroicons/react/20/solid";
 import clsx from "clsx";
 
 export function FounderBadge({ className }: { className?: string }) {
