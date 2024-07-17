@@ -53,7 +53,7 @@ ProfileCard.Banner = function ProfileCardBanner({decoration}: {
   )
 }
 
-ProfileCard.Avatar = function ProfileCardBanner({className, decoration}: {
+ProfileCard.Avatar = function ProfileCardAvatar({className, decoration}: {
   className?: string
   decoration: ProfileDecoration
 }) {
