@@ -4,6 +4,7 @@ export type Profile = {
   handle: string
   displayName: string
   decoration: ProfileDecoration
+  badges: Set<Badge>
 }
 
 export type ProfileDecoration = {
@@ -16,5 +17,7 @@ export type ProfileDecoration = {
     url: string
   }
 }
+
+export type Badge = 'Founder' | 'Verified' | 'Official' | 'Experimental'
 
 type Color = Property.Color
