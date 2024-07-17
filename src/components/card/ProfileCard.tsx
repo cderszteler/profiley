@@ -1,19 +1,12 @@
 import React, {useMemo} from "react";
-import {Badge, Profile, ProfileDecoration} from "@/lib/profiles";
+import {Profile, ProfileDecoration} from "@/lib/profiles";
 import {QuestionMarkCircleIcon} from "@heroicons/react/24/outline"
 import clsx from "clsx";
-import {
-  ExperimentalBadge,
-  FounderBadge,
-  OfficialBadge,
-  VerifiedBadge
-} from "@/components/Badges";
+import {ProfileCardHeader} from "@/components/card/ProfileCardHeader";
 
 export function ProfileCard({profile}: {
   profile: Profile
 }) {
-
-
   return (
     <ProfileCard.Container decoration={profile.decoration}>
       <ProfileCard.Banner decoration={profile.decoration}/>
@@ -97,26 +90,7 @@ ProfileCard.Avatar = function ProfileCardAvatar({className, decoration}: {
   )
 }
 
-ProfileCard.Header = function ProfileCardHeader({profile}: {
-  profile: Profile
-}) {
-  return (
-    <div className="flex flex-col gap-y-1.5 sm:gap-y-1 text-slate-900 dark:text-slate-100">
-      <h1 className="font-bold text-2xl">{profile.displayName}</h1>
-      <div className="flex items-center gap-x-2">
-        <h2 className="font-medium">{profile.handle}</h2>
-        <ProfileBadges badges={profile.badges}/>
-      </div>
-    </div>
-  )
-}
-
-const badgeIcons: Record<Badge, React.ReactNode> = {
-  'Founder': <FounderBadge className="w-[1.23rem]"/>,
-  'Official': <OfficialBadge className="w-5"/>,
-  'Verified': <VerifiedBadge className="w-5"/>,
-  'Experimental': <ExperimentalBadge className="w-5"/>
-}
+ProfileCard.Header = ProfileCardHeader
 
 function ProfileBadges({ badges }: { badges: Profile["badges"] }) {
   const icons = useMemo(() => Array.from(badges).map(badge => badgeIcons[badge]), [badges])
