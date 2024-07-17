@@ -29,7 +29,7 @@ ProfileCard.Container = function ProfileCard({children, decoration}: {
   return (
     <div
       className={clsx(
-        "w-full max-w-lg h-max bg-slate-100 dark:bg-slate-900",
+        "w-full max-w-lg h-max bg-light-primary dark:bg-dark-primary",
         "relative border-4 border-transparent rounded-lg bg-clip-padding",
       )}
     >
@@ -42,7 +42,7 @@ ProfileCard.Container = function ProfileCard({children, decoration}: {
           "--tw-gradient-stops": "var(--tw-gradient-from), var(--tw-gradient-to)"
         }}
       />
-      <div className="rounded overflow-hidden">
+      <div className="rounded overflow-hidden text-dark-primary dark:text-light-primary">
         {children}
       </div>
     </div>
@@ -77,12 +77,12 @@ ProfileCard.Avatar = function ProfileCardAvatar({className, decoration}: {
   const avatar = useMemo(() => {
     return decoration.avatar
       ? <div className="bg-cover w-full h-full" style={{backgroundImage: `url(${decoration.avatar?.url})`}}/>
-      : <QuestionMarkCircleIcon className="w-full text-slate-900 dark:text-slate-100"/>
+      : <QuestionMarkCircleIcon className="w-full"/>
   }, [decoration.avatar])
 
   return (
     <div className={clsx(
-      "relative w-24 h-24 sm:w-32 sm:h-32 rounded-full border-8 border-slate-100 dark:border-slate-900 bg-slate-100 dark:bg-slate-900 overflow-hidden",
+      "relative w-24 h-24 sm:w-32 sm:h-32 rounded-full border-8 border-light-primary dark:border-dark-primary bg-light-primary dark:bg-dark-primary overflow-hidden",
       className
     )}>
       {avatar}
@@ -91,17 +91,3 @@ ProfileCard.Avatar = function ProfileCardAvatar({className, decoration}: {
 }
 
 ProfileCard.Header = ProfileCardHeader
-
-function ProfileBadges({ badges }: { badges: Profile["badges"] }) {
-  const icons = useMemo(() => Array.from(badges).map(badge => badgeIcons[badge]), [badges])
-
-  if (badges.size === 0) {
-    return <></>
-  }
-
-  return (
-    <div className="flex items-center justify-center gap-x-1 px-1 rounded-md ring-1 ring-slate-400 dark:ring-slate-600">
-      {icons}
-    </div>
-  )
-}
