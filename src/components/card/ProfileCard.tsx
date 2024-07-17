@@ -84,7 +84,7 @@ ProfileCard.Avatar = function ProfileCardAvatar({className, decoration}: {
 
   return (
     <div className={clsx(
-      "relative w-24 h-24 sm:w-32 sm:h-32 rounded-full border-8 border-light-primary dark:border-dark-primary bg-light-primary dark:bg-dark-primary overflow-hidden",
+      "relative w-24 h-24 sm:w-32 sm:h-32 rounded-full border-6 sm:border-8 border-light-primary dark:border-dark-primary bg-light-primary dark:bg-dark-primary overflow-hidden",
       className
     )}>
       {avatar}
