@@ -4,6 +4,7 @@ import {QuestionMarkCircleIcon} from "@heroicons/react/24/outline"
 import clsx from "clsx";
 import {ProfileCardHeader} from "@/components/card/ProfileCardHeader";
 import {ProfileCardBody} from "@/components/card/ProfileCardBody";
+import {ProfileCardSocials} from "@/components/card/ProfileCardSocials";
 
 export function ProfileCard({profile}: {
   profile: Profile
@@ -17,6 +18,7 @@ export function ProfileCard({profile}: {
       <div className="flex flex-col gap-y-4 sm:gap-y-5 px-4 py-2 sm:py-4">
         <ProfileCard.Header profile={profile}/>
         <ProfileCard.Body profile={profile}/>
+        <ProfileCardSocials className="-mt-2 sm:-mt-3" profile={profile}/>
       </div>
     </ProfileCard.Container>
   )
@@ -94,3 +96,4 @@ ProfileCard.Avatar = function ProfileCardAvatar({className, decoration}: {
 
 ProfileCard.Header = ProfileCardHeader
 ProfileCard.Body = ProfileCardBody
+ProfileCard.Socials = ProfileCardSocials
