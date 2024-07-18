@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .ring-primary {
+    @apply ring-1 ring-slate-300 dark:ring-slate-700
+  }

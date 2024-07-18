@@ -34,7 +34,7 @@ function ProfileBadges({ badges }: { badges: Profile["badges"] }) {
   }
 
   return (
-    <div className="flex items-center justify-center gap-x-1 px-1 rounded-md ring-1 ring-slate-300 dark:ring-slate-700">
+    <div className="flex items-center justify-center gap-x-1 px-1 rounded-md ring-primary">
       {icons}
     </div>
   )
