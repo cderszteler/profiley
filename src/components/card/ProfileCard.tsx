@@ -46,7 +46,7 @@ ProfileCard.Container = function ProfileCard({children, decoration}: {
           "--tw-gradient-stops": "var(--tw-gradient-from), var(--tw-gradient-to)"
         }}
       />
-      <div className="rounded overflow-hidden text-dark-primary dark:text-light-primary">
+      <div className="text-dark-primary dark:text-light-primary">
         {children}
       </div>
     </div>
@@ -68,7 +68,7 @@ ProfileCard.Banner = function ProfileCardBanner({decoration}: {
 
   return (
     <div
-      className="w-full h-48 bg-cover"
+      className="w-full h-48 bg-cover rounded-t-lg"
       style={style}
     />
   )

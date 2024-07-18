@@ -6,6 +6,7 @@ import React, {useEffect, useRef, useState} from "react";
 export default function Tooltip({ trigger = 'hover', autoHideInterval = 1500, ...props }: {
   content: React.ReactNode
   children: React.ReactNode
+  className?: string
   trigger?: 'click' | 'hover'
   autoHideInterval?: number
   autoHide?: boolean
@@ -47,7 +48,10 @@ export default function Tooltip({ trigger = 'hover', autoHideInterval = 1500, ..
         style={trigger === 'click' ? { transform: "scale(0)" } : {}}
       >
         <div className="flex max-w-xs flex-col items-center">
-          <div className="px-2 py-1.5 bg-slate-200 dark:bg-slate-800 ring-primary text-center text-xs text-dark-primary dark:text-light-primary rounded">
+          <div className={clsx(
+            "px-2 py-1.5 bg-light-primary dark:bg-slate-800 ring-primary text-center text-xs text-dark-primary dark:text-light-primary rounded",
+            props.className
+          )}>
             {props.content}
           </div>
           {props.triangle && (<div className="clip-bottom h-2 w-4 bg-slate-200 dark:bg-slate-800"/>)}
