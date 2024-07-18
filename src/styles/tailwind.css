@@ -6,3 +6,8 @@
   .ring-primary {
     @apply ring-1 ring-slate-300 dark:ring-slate-700
   }
+}
+
+.clip-bottom {
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+}

@@ -6,7 +6,9 @@ import {
   OfficialBadge,
   VerifiedBadge
 } from "@/components/Badges";
+import Tooltip from "@/components/Tooltip";
 
+// TODO: Implement clickable handle
 export function ProfileCardHeader({profile}: { profile: Profile }) {
   return (
     <div className="flex flex-col gap-y-1.5 sm:gap-y-1">
@@ -19,15 +21,34 @@ export function ProfileCardHeader({profile}: { profile: Profile }) {
   )
 }
 
-const badgeIcons: Record<Badge, React.ReactNode> = {
-  'Founder': <FounderBadge className="w-[1.23rem]"/>,
-  'Official': <OfficialBadge className="w-5"/>,
-  'Verified': <VerifiedBadge className="w-5"/>,
-  'Experimental': <ExperimentalBadge className="w-5"/>
+const badgeIcons: Record<Badge, (key: React.Key) => React.ReactNode> = {
+  'Founder': (key: any) => (
+    <Tooltip key={key} content="Founder">
+      <FounderBadge className="w-[1.23rem] cursor-pointer"/>
+    </Tooltip>
+  ),
+  'Official': (key: any) => (
+    <Tooltip key={key} content="Official">
+      <OfficialBadge className="w-5 cursor-pointer"/>
+    </Tooltip>
+  ),
+  'Verified': (key: any) => (
+    <Tooltip key={key} content="Verified">
+      <VerifiedBadge className="w-5 cursor-pointer"/>
+    </Tooltip>
+  ),
+  'Experimental': (key: any) => (
+    <Tooltip key={key} content="Experimental Tester">
+      <ExperimentalBadge className="w-5 cursor-pointer"/>
+    </Tooltip>
+  ),
 }
 
 function ProfileBadges({ badges }: { badges: Profile["badges"] }) {
-  const icons = useMemo(() => Array.from(badges).map(badge => badgeIcons[badge]), [badges])
+  const icons = useMemo(
+    () => Array.from(badges).map((badge, index) => badgeIcons[badge](index)),
+    [badges]
+  )
 
   if (badges.size === 0) {
     return <></>
