@@ -7,6 +7,7 @@ import {
   VerifiedBadge
 } from "@/components/Badges";
 import Tooltip from "@/components/Tooltip";
+import Copyable from "../Copyable";
 
 // TODO: Implement clickable handle
 export function ProfileCardHeader({profile}: { profile: Profile }) {
@@ -14,7 +15,9 @@ export function ProfileCardHeader({profile}: { profile: Profile }) {
     <div className="flex flex-col gap-y-1.5 sm:gap-y-1">
       <h1 className="font-bold text-2xl">{profile.displayName}</h1>
       <div className="flex items-center gap-x-2">
-        <h2 className="font-medium">{profile.handle}</h2>
+        <Copyable content={profile.handle}>
+          <h2 className="font-medium">{profile.handle}</h2>
+        </Copyable>
         <ProfileBadges badges={profile.badges}/>
       </div>
     </div>
