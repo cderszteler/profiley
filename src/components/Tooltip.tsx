@@ -8,6 +8,7 @@ export default function Tooltip({ trigger = 'hover', autoHideInterval = 1500, ..
   children: React.ReactNode
   className?: string
   trigger?: 'click' | 'hover'
+  onClick?: () => void
   autoHideInterval?: number
   autoHide?: boolean
   triangle?: boolean
@@ -35,6 +36,7 @@ export default function Tooltip({ trigger = 'hover', autoHideInterval = 1500, ..
         if (trigger === 'click') {
           setOpened(props.autoHide ? true : !opened)
         }
+        props.onClick && props.onClick()
       }}
     >
       {props.children}

@@ -3,6 +3,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import {Profile} from "@/lib/profiles";
 import {providers, SocialProvider, SocialProviderType} from "@/lib/socials";
+import Copyable from "../Copyable";
 
 export function ProfileCardSocials({profile, className}: {
   profile: Profile
@@ -35,9 +36,10 @@ function Social({ provider, handle }: {
   handle: string
 }) {
   if (provider?.copy) {
-    // TODO: Implement copy
     return (
-      <provider.icon className="w-5 [&:not(:hover)]:fill-slate-500 transition duration-100"/>
+      <Copyable toCopy={handle} hoverContent={handle}>
+        <provider.icon className="w-5 [&:not(:hover)]:fill-slate-500 transition duration-100"/>
+      </Copyable>
     )
   } else {
     return (
