@@ -7,6 +7,7 @@ export type Profile = {
   createdAt: Date
   decoration: ProfileDecoration
   badges: Set<Badge>
+  about: string
   socials: Partial<Record<SocialProviderType, string>>
 }
 

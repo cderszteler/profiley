@@ -20,8 +20,18 @@ const config: Config = {
         "light-primary": colors.slate["100"],
         "dark-primary": colors.slate["900"],
       },
+      typography: {
+        quoteless: {
+          css: {
+            'blockquote p:first-of-type::before': {content: 'none'},
+            'blockquote p:first-of-type::after': {content: 'none'},
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 };
 export default config;
