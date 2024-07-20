@@ -6,7 +6,8 @@ import clsx from "clsx";
 import {Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import ProfileCardAbout from "@/components/card/ProfileCardAbout";
 
-const tabs = ['About', 'Gallery', 'Favorites']
+// TODO: Re-add/implement these tabs
+const tabs = ['About'/*, 'Gallery', 'Favorites'*/]
 type Tab = typeof tabs[number]
 
 export function ProfileCardBody({profile}: { profile: Profile }) {
@@ -19,7 +20,7 @@ export function ProfileCardBody({profile}: { profile: Profile }) {
           {tabs.map(tab => (
             <Tab
               className={clsx(
-                "pb-2 cursor-pointer text-slate-800 dark:text-slate-200",
+                "pb-2 cursor-pointer text-slate-800 dark:text-slate-200 outline-0",
                 selected === tab && "border-b-2 border-slate-800 dark:border-slate-200"
               )}
               onClick={() => setSelected(tab)}
