@@ -24,11 +24,26 @@ export function ProfileCard({profile}: {
   )
 }
 
+export function LoadingProfileCard() {
+  return (
+    <ProfileCard.Container>
+      <ProfileCard.Banner/>
+      <div className="relative h-12 sm:h-16">
+        <ProfileCard.Avatar className="absolute -top-12 sm:-top-16 left-2"/>
+      </div>
+      <div className="flex flex-col gap-y-4 sm:gap-y-5 px-4 pt-2 pb-6 sm:pt-4 sm:pb-8">
+        <ProfileCard.Header/>
+        <ProfileCard.Body/>
+      </div>
+    </ProfileCard.Container>
+  )
+}
+
 ProfileCard.Container = function ProfileCard({children, decoration}: {
   children: React.ReactNode
-  decoration: ProfileDecoration
+  decoration?: ProfileDecoration
 }) {
-  const borderColor = decoration.borderColor
+  const borderColor = decoration?.borderColor
 
   return (
     <div
@@ -38,8 +53,11 @@ ProfileCard.Container = function ProfileCard({children, decoration}: {
       )}
     >
       <div
-        className="absolute inset-0 -z-10 -m-1 rounded-[inherit] bg-gradient-to-b"
-        style={{
+        className={clsx(
+          "absolute inset-0 -z-10 -m-1 rounded-[inherit] bg-gradient-to-b",
+          !borderColor && "bg-light-primary dark:bg-dark-primary"
+        )}
+        style={borderColor && {
           // @ts-ignore
           "--tw-gradient-from": `${borderColor.from} var(--tw-gradient-from-position)`,
           "--tw-gradient-to": `${borderColor.to} var(--tw-gradient-to-position)`,
@@ -54,35 +72,42 @@ ProfileCard.Container = function ProfileCard({children, decoration}: {
 }
 
 ProfileCard.Banner = function ProfileCardBanner({decoration}: {
-  decoration: ProfileDecoration
+  decoration?: ProfileDecoration
 }) {
   const style = useMemo(() => {
-    // @ts-ignore
-    if (decoration.banner?.color) {
-      // @ts-ignore
+    if (!decoration) {
+      return {}
+    } else if (decoration.banner?.color) {
       return { backgroundColor: decoration.banner.color }
     }
-    // @ts-ignore
     return { backgroundImage: `url(${decoration.banner.url})` }
-  }, [decoration.banner])
+  }, [decoration])
 
   return (
     <div
-      className="w-full h-48 bg-cover rounded-t-lg"
+      className={clsx(
+        "w-full h-36 sm:h-48 bg-cover rounded-t",
+        !decoration && "p-3 animate-pulse"
+      )}
       style={style}
-    />
+    >
+      {!decoration && <div className="w-full h-full bg-slate-250 dark:bg-slate-750 rounded-lg"/>}
+    </div>
   )
 }
 
 ProfileCard.Avatar = function ProfileCardAvatar({className, decoration}: {
   className?: string
-  decoration: ProfileDecoration
+  decoration?: ProfileDecoration
 }) {
   const avatar = useMemo(() => {
-    return decoration.avatar
+    return decoration?.avatar
       ? <div className="bg-cover w-full h-full" style={{backgroundImage: `url(${decoration.avatar?.url})`}}/>
-      : <QuestionMarkCircleIcon className="w-full"/>
-  }, [decoration.avatar])
+      : <QuestionMarkCircleIcon className={clsx(
+          "w-full",
+          !decoration && "animate-pulse text-slate-250 dark:text-slate-750"
+        )}/>
+  }, [decoration])
 
   return (
     <div className={clsx(

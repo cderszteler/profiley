@@ -8,16 +8,30 @@ import {
 } from "@/components/Badges";
 import Tooltip from "@/components/Tooltip";
 import Copyable from "../Copyable";
+import clsx from "clsx";
 
-export function ProfileCardHeader({profile}: { profile: Profile }) {
+export function ProfileCardHeader({profile}: { profile?: Profile }) {
   return (
-    <div className="flex flex-col gap-y-1.5 sm:gap-y-1">
-      <h1 className="font-bold text-2xl">{profile.displayName}</h1>
+    <div className={clsx(
+      "flex flex-col gap-y-1.5 sm:gap-y-1",
+      !profile && "animate-pulse"
+    )}>
+      <h1 className={clsx(
+        "font-bold text-2xl",
+        !profile && "w-28 h-4 mb-3 bg-slate-250 dark:bg-slate-750 rounded-lg"
+      )}>
+        {profile?.displayName}
+      </h1>
       <div className="flex items-center gap-x-2">
-        <Copyable toCopy={profile.handle}>
-          <h2 className="font-medium">{profile.handle}</h2>
-        </Copyable>
-        <ProfileBadges badges={profile.badges}/>
+        {!profile && (
+          <h2 className="font-medium w-16 h-3 mb-2 bg-slate-250 dark:bg-slate-750 rounded-lg"/>
+        )}
+        {profile && (
+          <Copyable toCopy={profile?.handle || "test"}>
+            <h2 className="font-medium">{profile?.handle}</h2>
+          </Copyable>
+        )}
+        {profile && <ProfileBadges badges={profile.badges}/>}
       </div>
     </div>
   )

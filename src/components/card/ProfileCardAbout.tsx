@@ -5,9 +5,22 @@ import remarkGfm from "remark-gfm";
 import React from "react";
 import remarkGemoji from "remark-gemoji";
 
-export default function ProfileCardAbout({ profile }: { profile: Profile }) {
+export default function ProfileCardAbout({ profile }: { profile?: Profile }) {
+  if (!profile) {
+    return (
+      <div className="flex flex-col mt-2 gap-y-3 justify-between animate-pulse w-full">
+        <TextImitation className="w-80 sm:w-96"/>
+        <TextImitation className="w-36"/>
+        <TextImitation className="w-64"/>
+      </div>
+    )
+  }
+
   return (
-    <div className="flex flex-col flex-1 gap-y-2 justify-between">
+    <div className={clsx(
+      "flex flex-col flex-1 gap-y-2 justify-between",
+      !profile && "animate-pulse w-full h-32"
+    )}>
       <Markdown
         className={clsx(
           "prose prose-sm dark:prose-invert",
@@ -74,4 +87,10 @@ function flatten(text: any, child: any): string {
   return typeof child === 'string'
     ? text + child
     : React.Children.toArray(child.props.children).reduce(flatten, text)
+}
+
+function TextImitation({ className }: { className?: string }) {
+  return (
+    <div className={clsx("h-2 bg-slate-250 dark:bg-slate-750 rounded-lg", className)}/>
+  )
 }

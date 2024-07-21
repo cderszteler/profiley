@@ -10,12 +10,12 @@ import ProfileCardAbout from "@/components/card/ProfileCardAbout";
 const tabs = ['About'/*, 'Gallery', 'Favorites'*/]
 type Tab = typeof tabs[number]
 
-export function ProfileCardBody({profile}: { profile: Profile }) {
+export function ProfileCardBody({profile}: { profile?: Profile }) {
   const [selected, setSelected] = useState<Tab>('About')
 
   return (
     <div className="flex flex-col min-h-32 px-3 py-4 sm:px-4 bg-slate-150 dark:bg-slate-850 ring-primary rounded-lg">
-      <TabGroup className="flex-1 flex flex-col gap-y-5">
+      <TabGroup className="flex-1 flex flex-col gap-y-3">
         <TabList className="flex justify-between sm:justify-normal sm:gap-x-8 pr-4 sm:pr-0 border-b border-slate-500">
           {tabs.map(tab => (
             <Tab

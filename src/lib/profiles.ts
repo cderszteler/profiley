@@ -16,7 +16,7 @@ export type ProfileDecoration = {
     from: Color
     to: Color
   }
-  banner: { color: Color } | { url: string }
+  banner: { color: Color, url: null } | { url: string, color: null }
   avatar?: {
     url: string
   }

@@ -15,6 +15,8 @@ const config: Config = {
       colors: {
         "slate": {
           "150": `color-mix(in srgb, ${colors.slate["100"]}, ${colors.slate["200"]})`,
+          "250": `color-mix(in srgb, ${colors.slate["200"]}, ${colors.slate["300"]})`,
+          "750": `color-mix(in srgb, ${colors.slate["700"]}, ${colors.slate["800"]})`,
           "850": `color-mix(in srgb, ${colors.slate["800"]}, ${colors.slate["900"]})`
         },
         "light-primary": colors.slate["100"],
