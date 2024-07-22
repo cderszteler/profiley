@@ -101,8 +101,8 @@ ProfileCard.Avatar = function ProfileCardAvatar({className, decoration}: {
   decoration?: ProfileDecoration
 }) {
   const avatar = useMemo(() => {
-    return decoration?.avatar
-      ? <div className="bg-cover w-full h-full" style={{backgroundImage: `url(${decoration.avatar?.url})`}}/>
+    return decoration?.avatar?.url
+      ? <div className="bg-cover w-full h-full" style={{backgroundImage: `url(${decoration.avatar.url})`}}/>
       : <QuestionMarkCircleIcon className={clsx(
           "w-full",
           !decoration && "animate-pulse text-slate-250 dark:text-slate-750"
