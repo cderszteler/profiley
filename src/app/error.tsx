@@ -7,23 +7,14 @@ export default function ErrorProfilePage({error, reset: rerender}: {
   error: Error & { digest?: string }
   reset: () => void
 }) {
-  if (error.message === "not found") {
-    return (
-      <ErrorPage code={404} title="Profile not found">
-        This handle is not associated to any profile. Use it to create
-        <Link href="/" className="text-slate-800 dark:text-slate-200 font-medium"> your profile</Link>
-      </ErrorPage>
-    )
-  }
-
   return (
-    <ErrorPage code={500} title="An unexpected error occurred">
-      An error occurred rendering this profile.&nbsp;
+    <ErrorPage code={500} title="Error">
+      An unexpected error occurred. Please&nbsp;
       <button
         onClick={() => rerender()}
         className="text-slate-800 dark:text-slate-200 font-medium"
       >
-        Try it again&nbsp;
+        try it again&nbsp;
       </button>
       or&nbsp;
       <Link href="/" className="text-slate-800 dark:text-slate-200 font-medium">
@@ -33,7 +24,7 @@ export default function ErrorProfilePage({error, reset: rerender}: {
   )
 }
 
-function ErrorPage({ code, title, children: message }: {
+export function ErrorPage({ code, title, children: message }: {
   code: number
   title: string
   children: React.ReactNode

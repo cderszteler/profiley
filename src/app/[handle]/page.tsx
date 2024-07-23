@@ -3,8 +3,8 @@ import {ProfileCard} from "@/components/card/ProfileCard";
 import React from "react";
 import {dynamo, tableName} from "@/lib/database";
 import {GetCommand} from "@aws-sdk/lib-dynamodb";
+import {notFound} from "next/navigation";
 
-// TODO: Fix logging of thrown error
 export default async function ProfilePage({ params }: { params: { handle: string }}) {
   const response = await dynamo.send(new GetCommand({
     TableName: tableName,
@@ -16,7 +16,7 @@ export default async function ProfilePage({ params }: { params: { handle: string
   const profile = item && parseItemToProfile(item)
 
   if (!profile) {
-    throw new Error("not found")
+    notFound()
   }
 
   return (
