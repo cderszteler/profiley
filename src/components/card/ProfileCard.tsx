@@ -7,7 +7,7 @@ import clsx from "clsx";
 import {ProfileCardHeader} from "@/components/card/ProfileCardHeader";
 import {ProfileCardBody} from "@/components/card/ProfileCardBody";
 import {ProfileCardSocials} from "@/components/card/ProfileCardSocials";
-import {ProfileContext} from "@/app/[handle]/layout";
+import { ProfileContext } from "@/app/[handle]/context";
 
 export function ProfileCard({profile}: {
   profile: Profile

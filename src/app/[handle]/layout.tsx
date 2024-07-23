@@ -1,11 +1,8 @@
 'use client'
 
 import {ContainerOuter} from "@/components/Container";
-import React, {createContext, SetStateAction, useState} from "react";
-
-export const ProfileContext = createContext<{
-  setBackgroundUrl?: React.Dispatch<SetStateAction<string | undefined>>
-}>({})
+import React, {useState} from "react";
+import { ProfileContext } from "./context";
 
 export default function ProfileLayout({ children }: { children: React.ReactNode }) {
   const [backgroundUrl, setBackgroundUrl] = useState<string>()
