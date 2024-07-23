@@ -1,21 +1,30 @@
-import React, {useMemo} from "react";
+'use client'
+
+import React, {useContext, useEffect, useMemo} from "react";
 import {Profile, ProfileDecoration} from "@/lib/profiles";
 import {QuestionMarkCircleIcon} from "@heroicons/react/24/outline"
 import clsx from "clsx";
 import {ProfileCardHeader} from "@/components/card/ProfileCardHeader";
 import {ProfileCardBody} from "@/components/card/ProfileCardBody";
 import {ProfileCardSocials} from "@/components/card/ProfileCardSocials";
+import {ProfileContext} from "@/app/[handle]/layout";
 
 export function ProfileCard({profile}: {
   profile: Profile
 }) {
+  const context = useContext(ProfileContext)
+
+  useEffect(() => {
+    context.setBackgroundUrl?.(profile.decoration.background.url)
+  }, [context, profile.decoration.background.url]);
+
   return (
     <ProfileCard.Container decoration={profile.decoration}>
       <ProfileCard.Banner decoration={profile.decoration}/>
       <div className="relative h-12 sm:h-16">
         <ProfileCard.Avatar decoration={profile.decoration} className="absolute -top-12 sm:-top-16 left-2"/>
       </div>
-      <div className="flex flex-col gap-y-4 sm:gap-y-5 px-4 py-2 sm:py-4">
+      <div className="flex flex-col gap-y-4 sm:gap-y-5 px-4 pt-2 pb-6 sm:pt-4 sm:pb-8">
         <ProfileCard.Header profile={profile}/>
         <ProfileCard.Body profile={profile}/>
         <ProfileCardSocials className="-mt-2 sm:-mt-3" profile={profile}/>

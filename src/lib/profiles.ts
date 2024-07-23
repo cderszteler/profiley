@@ -20,7 +20,7 @@ export type ProfileDecoration = {
   avatar: {
     url?: string
   }
-  backgroundColor: {
+  background: {
     url?: string
   }
 }
