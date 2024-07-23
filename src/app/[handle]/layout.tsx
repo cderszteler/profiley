@@ -9,7 +9,7 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
 
   return (
     <ProfileContext.Provider value={{ setBackgroundUrl: setBackgroundUrl }}>
-      <ContainerOuter className="sm:mt-32">
+      <ContainerOuter className="flex-grow flex flex-col justify-center min-h-full my-16 sm:mt-32 sm:justify-normal">
         <div className="flex justify-center">
           {children}
         </div>
