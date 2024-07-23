@@ -24,7 +24,10 @@ export function ProfileCard({profile}: {
       <div className="relative h-12 sm:h-16">
         <ProfileCard.Avatar decoration={profile.decoration} className="absolute -top-12 sm:-top-16 left-2"/>
       </div>
-      <div className="flex flex-col gap-y-4 sm:gap-y-5 px-4 pt-2 pb-6 sm:pt-4 sm:pb-8">
+      <div className={clsx(
+        "flex flex-col gap-y-4 sm:gap-y-5 px-4 pt-2 sm:pt-4",
+        Object.entries(profile.socials).length === 0 ? "pb-3" : "pb-2"
+      )}>
         <ProfileCard.Header profile={profile}/>
         <ProfileCard.Body profile={profile}/>
         <ProfileCardSocials className="-mt-2 sm:-mt-3" profile={profile}/>
