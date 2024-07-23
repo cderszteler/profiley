@@ -4,7 +4,7 @@ import React from "react";
 import {dynamo, tableName} from "@/lib/database";
 import {GetCommand} from "@aws-sdk/lib-dynamodb";
 
-// TODO: Implement error handling
+// TODO: Fix logging of thrown error
 export default async function ProfilePage({ params }: { params: { handle: string }}) {
   const response = await dynamo.send(new GetCommand({
     TableName: tableName,
@@ -16,10 +16,7 @@ export default async function ProfilePage({ params }: { params: { handle: string
   const profile = item && parseItemToProfile(item)
 
   if (!profile) {
-    // TODO: Implement Profile not found
-    //   - throw error with specific message
-    //   - catch error in error.tsx
-    return <>Not found!</>
+    throw new Error("not found")
   }
 
   return (
