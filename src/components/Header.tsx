@@ -21,9 +21,9 @@ export default function Header() {
 
   return (
     <header className="bg-light-primary dark:bg-dark-primary text-dark-primary dark:text-light-primary">
-      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6 lg:px-8">
         <div className="flex items-center gap-x-12">
-          <Link href="/" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5 flex-shrink-0">
             <span className="sr-only">Profiley</span>
             <Image alt="Logo" src={logo} className="h-8 w-auto"/>
           </Link>
@@ -42,6 +42,24 @@ export default function Header() {
             )}
           </div>
         </div>
+        {/*TODO: Implement login and signup*/}
+        <div className={clsx(
+          "flex flex-1 items-center justify-end gap-x-6",
+          loggedIn ? "hidden" : "visible"
+        )}>
+          <Link
+            href="#"
+            className="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-dark-primary lg:dark:text-light-primary"
+          >
+            Log in
+          </Link>
+          <Link
+            href="#"
+            className="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+          >
+            Create your profile
+          </Link>
+        </div>
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -51,12 +69,6 @@ export default function Header() {
             <span className="sr-only">Open main menu</span>
             <Bars3Icon aria-hidden="true" className="h-6 w-6"/>
           </button>
-        </div>
-        <div className="hidden lg:flex">
-          {/*TODO: Implement login*/}
-          <Link href="#" className="text-sm font-semibold leading-6">
-            Log in <span aria-hidden="true">&rarr;</span>
-          </Link>
         </div>
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
@@ -89,10 +101,7 @@ export default function Header() {
             </CloseButton>
           </div>
           <div className="mt-6 flow-root">
-            <div className={clsx(
-              "-my-6",
-              loggedIn ? "divide-y divide-slate-500/20" : ""
-            )}>
+            <div className={clsx("-my-6")}>
               <div className="space-y-2 pt-5 pb-3">
                 {navigation
                   .filter(item => !item.loggedIn || loggedIn)
@@ -107,7 +116,7 @@ export default function Header() {
                   )
                 )}
               </div>
-              <div className={clsx("py-3", !loggedIn && "-my-6")}>
+              <div className={clsx("py-3", loggedIn ? "hidden" : "-my-6")}>
                 {/*TODO: Implement login*/}
                 <Link
                   href="/"
