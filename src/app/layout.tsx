@@ -4,6 +4,7 @@ import React from "react";
 import Footer from "@/components/Footer";
 import getSession from "@/lib/auth";
 import ServerSessionProvider from "@/components/ServerSessionProvider";
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "Profiley",
@@ -21,6 +22,7 @@ export default async function RootLayout({
     <html lang="en" className="h-full">
       <body className="bg-slate-50 dark:bg-slate-950 flex flex-col min-h-screen">
         <ServerSessionProvider session={session}>
+          <Header/>
           <main className="flex-grow flex flex-col">
             {children}
           </main>
