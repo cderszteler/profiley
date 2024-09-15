@@ -30,6 +30,9 @@ const config: Config = {
           },
         },
       },
+      screens: {
+        'tall': { 'raw': '(min-height: 1150px)' },
+      }
     },
   },
   plugins: [

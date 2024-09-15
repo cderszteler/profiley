@@ -3,6 +3,7 @@
 import {ContainerOuter} from "@/components/Container";
 import React, {useState} from "react";
 import { ProfileContext } from "./context";
+import Background from "@/components/Background";
 
 export default function ProfileLayout({ children }: { children: React.ReactNode }) {
   const [backgroundUrl, setBackgroundUrl] = useState<string>()
@@ -18,6 +19,9 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
         <video autoPlay muted loop className="fixed inset-0 w-full h-full -z-50 object-cover">
           <source src={backgroundUrl} type="video/mp4"/>
         </video>
+      )}
+      {!backgroundUrl && (
+        <Background/>
       )}
     </ProfileContext.Provider>
   )
