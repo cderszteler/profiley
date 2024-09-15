@@ -9,10 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.616.0",
-    "@aws-sdk/lib-dynamodb": "^3.616.0",
-    "@aws-sdk/util-dynamodb": "^3.616.0",
-    "@headlessui/react": "^2.1.2",
+    "@aws-sdk/client-dynamodb": "^3.651.1",
+    "@aws-sdk/lib-dynamodb": "^3.651.1",
+    "@aws-sdk/util-dynamodb": "^3.651.1",
+    "@headlessui/react": "^2.1.8",
     "@heroicons/react": "^2.1.5",
     "clsx": "^2.1.1",
     "next": "14.2.5",
@@ -24,14 +24,14 @@
     "remark-gfm": "^4.0.0"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.13",
-    "@types/node": "^20.14.11",
-    "@types/react": "^18.3.3",
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/node": "^20.16.5",
+    "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.5",
-    "postcss": "^8.4.39",
-    "tailwindcss": "^3.4.6",
-    "typescript": "^5.5.3"
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.11",
+    "typescript": "^5.6.2"
   }
 }
